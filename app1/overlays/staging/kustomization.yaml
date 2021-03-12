@@ -6,3 +6,6 @@ resources:
 
 patchesStrategicMerge:
 - patches/custom-env.yaml
+
+namespace: staging
+
