@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
 - manifests/app2.yaml
+- manifests/namespace.yaml
 
 namespace: app2
