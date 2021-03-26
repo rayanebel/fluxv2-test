@@ -35,6 +35,8 @@ jobs:
           path: ./data
           key: cache-data
       - run: ls -la
+      - run: ls -la data/
+      - run: cat data/text.txt
 
   # artifact-build:
   #   name: Build - With Artifact
