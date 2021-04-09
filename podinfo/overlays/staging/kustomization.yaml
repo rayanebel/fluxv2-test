@@ -8,3 +8,7 @@ patchesStrategicMerge:
 - patches/custom-env.yaml
 
 namespace: podinfo
+
+images:
+- name: ghcr.io/stefanprodan/podinfo
+  newTag: 5.0.0 # {"$imagepolicy": "podinfo:podinfo:tag"}
