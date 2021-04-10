@@ -7,8 +7,6 @@ resources:
 patchesStrategicMerge:
 - patches/custom-env.yaml
 
-namespace: podinfo
-
 images:
 - name: rayanebel/podinfo
   newTag: git-12345 # {"$imagepolicy": "podinfo-bis:podinfo-bis:tag"}
