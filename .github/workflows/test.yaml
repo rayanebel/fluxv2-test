@@ -64,8 +64,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
           push: true
-          context: dockerfiles
-          file: Dockerfile
+          file: ./dockerfiles/Dockerfile
           tags: |
             ${{ env.IMAGE }}:${{ steps.docker-tag.outputs.tag-prefix }}-${{ github.run_number }}
 
