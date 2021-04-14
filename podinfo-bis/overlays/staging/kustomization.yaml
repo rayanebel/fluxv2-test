@@ -6,4 +6,4 @@ patchesStrategicMerge:
 - patches/custom-env.yaml
 images:
 - name: rayanebel/podinfo
-  newTag: git-9c5db25-33 # {"$imagepolicy": "flux-system:podinfo-bis:tag"}
+  newTag: git-d831b53-34 # {"$imagepolicy": "flux-system:podinfo-bis:tag"}
