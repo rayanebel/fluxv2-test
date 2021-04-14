@@ -9,4 +9,4 @@ patchesStrategicMerge:
 
 images:
 - name: rayanebel/podinfo
-  newTag: git-12345 # {"$imagepolicy": "podinfo-bis:podinfo-bis:tag"}
+  newTag: git-12345 # {"$imagepolicy": "flux-system:podinfo-bis:tag"}
