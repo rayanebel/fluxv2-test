@@ -64,7 +64,7 @@ jobs:
       with:
           push: true
           context: .
-          file: ./dockerfiles/Dockerfile
+          file: dockerfiles/Dockerfile
           tags: |
             ${{ env.IMAGE }}:${{ steps.docker-tag.outputs.tag-prefix }}-${{ github.run_number }}
 
