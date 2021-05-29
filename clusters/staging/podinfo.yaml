@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./podinfo/overlays/staging
+  path: ./applications/podinfo/overlays/staging
   prune: true
   sourceRef:
     kind: GitRepository

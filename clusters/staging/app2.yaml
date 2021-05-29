@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: app1-prod
+  name: app2
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./app1/overlays/production
+  path: ./applications/app2/overlays/staging
   prune: true
   sourceRef:
     kind: GitRepository
