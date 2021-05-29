@@ -1,0 +1,22 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: webapp2
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: "./applications/webapp"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: webapp2
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: backend
+      namespace: webapp2
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: frontend
+      namespace: webapp2
+  timeout: 2m
