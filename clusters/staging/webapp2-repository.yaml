@@ -12,8 +12,8 @@ spec:
     - repository:
         name: frontend
       fromPath: deploy/bases/frontend
-      toPath: applications/webapp/base/frontend
+      toPath: applications/webapp2/base/frontend
     - repository:
         name: backend
       fromPath: deploy/bases/backend
-      toPath: applications/webapp/base/backend
+      toPath: applications/webapp2/base/backend
