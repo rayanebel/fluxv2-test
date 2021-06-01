@@ -5,9 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/stefanprodan/podinfo-deploy
+  url: https://github.com/rayanebel/fluxv2-test
   ref:
-    branch: include
+    branch: master
   include:
     - repository:
         name: frontend
