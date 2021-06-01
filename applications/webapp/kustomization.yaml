@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: webapp2
 resources:
-  - ../stacks/backend
-  - ../stacks/frontend
+  - ../stacks/deploy/bases/backend
+  - ../stacks/deploy/bases/frontend
   - namespace.yaml
 transformers:
   - labels.yaml
