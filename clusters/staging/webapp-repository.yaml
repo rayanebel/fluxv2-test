@@ -11,9 +11,9 @@ spec:
   include:
     - repository:
         name: frontend
-      fromPath: deploy/bases/frontend
-      toPath: applications/stacks/base/frontend
-    - repository:
-        name: backend
-      fromPath: deploy/bases/backend
-      toPath: applications/stacks/base/backend
+      #fromPath: deploy/bases/frontend
+      toPath: applications/stacks
+    # - repository:
+    #     name: backend
+    #   #fromPath: deploy/bases/backend
+    #   toPath: applications/stacks/base/backend
