@@ -14,9 +14,9 @@ spec:
     - apiVersion: apps/v1
       kind: Deployment
       name: backend
-      namespace: webapp
+      namespace: webapp2
     - apiVersion: apps/v1
       kind: Deployment
       name: frontend
-      namespace: webapp
+      namespace: webapp2
   timeout: 2m
