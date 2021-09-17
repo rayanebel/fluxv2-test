@@ -2,6 +2,5 @@
  test
 
 
-::: warning
-*here be dragons*
-:::
+> :information_source: NOTE  
+> test
