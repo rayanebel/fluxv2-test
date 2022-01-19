@@ -5,9 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./infrastructure/sources
+  path: ./infrastructure/sources/base
   prune: false
   sourceRef:
     kind: GitRepository
-    name: gitops
+    name: flux-system
   force: true
