@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: feat/create_stacks_and_reorganize_repository
   secretRef:
     name: flux-system
   url: https://github.com/lvmh-clienteling/is-k8s-stacks.git

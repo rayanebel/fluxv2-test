@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./infrastructure/stacks/stacks/infra/crds/default
+  path: ./infrastructure/stacks/stacks/crds/default
   prune: false
   dependsOn:
     - name: sources
