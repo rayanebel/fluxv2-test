@@ -1,0 +1,42 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: infra
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./infrastructure/stacks/stacks/infra/profiles/default
+  prune: false
+  dependsOn:
+    - name: infra-crds
+  sourceRef:
+    kind: GitRepository
+    name: gitops
+  force: true
+  postBuild:
+    substitute:
+      CERT_MANAGER_CERTS_EMAIL: rayane.bellazaar.ext@lvmh.com
+      CERT_MANAGER_CERTS_GCP_DNS_ZONE_NAME: lvmh-dev
+      CERT_MANAGER_CERTS_GCP_PROJECT_ID: grp-dev-lvmh-prj-clienteling
+      EXTERNAL_DNS_DOMAIN_FILTER: dev.lvmh.clienteling.lvmhda.com
+      EXTERNAL_DNS_DOMAIN_REGISTRY: txt
+      EXTERNAL_DNS_GCP_SERVICE_ACCOUNT: test@gcp.com
+      EXTERNAL_DNS_PROVIDER: google
+      EXTERNAL_SECRETS_GCP_SERVICE_ACCOUNT: test@gcp.com
+      EXTERNAL_SECRETS_LOG_LEVEL: info
+      EXTERNAL_SECRETS_LOG_MESSAGE_KEY: msg
+      EXTERNAL_SECRETS_METRICS_PORT: "3001"
+      EXTERNAL_SECRETS_POLLER_INTERVAL_MILLISECONDS: "10000"
+      EXTERNAL_SECRETS_WATCH_TIMEOUT: "60000"
+  patches:
+    - patch: |-
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: not-used
+        data:
+          EXTERNAL_DNS_SOURCE: |-
+            istio-gateway
+      target:
+        kind: ConfigMap
+        name: infra-external-dns-config
