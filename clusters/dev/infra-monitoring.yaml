@@ -1,0 +1,47 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: monitoring
+  namespace: monitoring
+spec:
+  interval: 5m0s
+  path: ./infrastructure/stacks/stacks/monitoring/flux
+  prune: true
+  dependsOn:
+    - name: sources
+      namespace: flux-system
+  sourceRef:
+    kind: GitRepository
+    name: gitops
+    namespace: flux-system
+  force: true
+  targetNamespace: monitoring
+  postBuild:
+    substitute:
+      DOMAIN: dev.lvmh.clienteling.lvmhda.com
+      KIALI_GRAFANA_USERNAME: admin
+      KIALI_GRAFANA_INTERNAL_URL: http://grafana.monitoring:3000
+      KIALI_GRAFANA_PUBLIC_URL: https://monitoring.dev.lvmh.clienteling.lvmhda.com
+      KIALI_PROMETHEUS_URL: http://prometheus.monitoring:9090/prometheus
+      KIALI_JAEGER_INTERNAL_URL: http://jaeger-query.tracing.svc.cluster.local:16685/jaeger
+      KIALI_JAEGER_PUBLIC_URL: https://monitoring.dev.lvmh.clienteling.lvmhda.com/jaeger
+      KIALI_ISTIO_NAMESPACE: istio-system
+      LOKI_GCS_BUCKET_NAME: k8s-monitoring-loki
+      ALERTMANAGER_EMAIL_SMTP_SERVER: "smtp.gmail.com:587"
+      ALERTMANAGER_EMAIL_FROM_ADDRESS: "lvmh.clienteling.test@gmail.com"
+      ALERTMANAGER_EMAIL_TO_ADDRESS: "lvmh.clienteling.test@gmail.com"
+      ALERTMANAGER_EMAIL_USERNAME: "lvmh.clienteling.test@gmail.com"
+  # healthChecks:
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: cert-manager
+  #     namespace: core-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: cert-manager-webhook
+  #     namespace: core-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: cert-manager-cainjector
+  #     namespace: core-system
+  timeout: 5m

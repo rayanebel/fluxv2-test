@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./infrastructure/stacks/stacks/infra/flux
-  prune: true
+  path: ./infrastructure/stacks/stacks/infra/profiles/default
+  prune: false
   dependsOn:
     - name: infra-crds
   sourceRef:
@@ -28,18 +28,15 @@ spec:
       EXTERNAL_SECRETS_METRICS_PORT: "3001"
       EXTERNAL_SECRETS_POLLER_INTERVAL_MILLISECONDS: "10000"
       EXTERNAL_SECRETS_WATCH_TIMEOUT: "60000"
-      DOMAIN: dev.lvmh.clienteling.lvmhda.com
-      POMERIUM_IDP_PROVIDER_URL: https://lvmh-sandbox.okta.com
-  healthChecks:
-      - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-        kind: Kustomization
-        name: cert-manager
-        namespace: core-system
-      - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-        kind: Kustomization
-        name: external-dns
-        namespace: core-system
-      - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-        kind: Kustomization
-        name: external-secrets
-        namespace: core-system
+  patches:
+    - patch: |-
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: not-used
+        data:
+          EXTERNAL_DNS_SOURCE: |-
+            istio-gateway
+      target:
+        kind: ConfigMap
+        name: infra-external-dns-config
