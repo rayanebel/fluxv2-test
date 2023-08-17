@@ -12,6 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: |
+      - name: script
+        run: |
+          set -x
           git fetch origin main
-          echo "REFERENCE: $GITHUB_HEAD_REF"
+          chmod +x test.sh
+          bash -x ./test.sh
+        env:
+          GITOPS_REFERENCE: ${{ env.GITHUB_HEAD_REF }}
