@@ -1,70 +1,15 @@
 on:
-  push:
-    branches: [master]
+  pull_request:
+    branches:
+      - main
 
 
-name: Cache Example
-
+name: Test
 jobs:
-  cache-build:
-    name: Build - With Cache
+  print-env:
+    name: Print ENV
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir -p data && echo "Hello it's my data" > data/text.txt
-      - uses: actions/cache@v2
-        id: data
-        with:
-          path: ./data
-          key: cache-data
-
-  cache-use-build:
-    name: Re-use Cache
-    runs-on: ubuntu-latest
-    needs: [cache-build]
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - uses: actions/cache@v2
-        id: data
-        with:
-          path: ./data
-          key: cache-data
-      - run: ls -la
-      - run: ls -la data/
-      - run: cat data/text.txt
-
-  # artifact-build:
-  #   name: Build - With Artifact
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #     - run: npm ci
-  #     - run: npm run build
-  #     - uses: actions/upload-artifact@v2
-  #       with:
-  #         name: nextjs-build
-  #         path: ./.next
-
-  # artifact-use-build:
-  #   name: Re-use Artifact
-  #   runs-on: ubuntu-latest
-  #   needs: [artifact-build]
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: nextjs-build
-  #     - run: ls .
+      - run: echo "REFERENCE: $GITHUB_HEAD_REF"
