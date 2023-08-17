@@ -12,4 +12,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo "REFERENCE: $GITHUB_HEAD_REF"
+      - run: |
+          echo "REFERENCE: $GITHUB_HEAD_REF"
