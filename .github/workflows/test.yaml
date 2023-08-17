@@ -13,4 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
+          git fetch origin main
           echo "REFERENCE: $GITHUB_HEAD_REF"
