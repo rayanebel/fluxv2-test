@@ -3,7 +3,7 @@ terraform 1.5.7
 terraform-docs 0.16.0
 tflint 0.48.0
 tfsec 1.28.4
-kubectl 1.27.4
+kubectlssss 1.27.4
 kubectx 0.9.4
 sops 3.8.0
 flux2 2.1.1
