@@ -1,16 +1,19 @@
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches:
-      - main
-
+    - main
 
 name: Test
 jobs:
-  print-env:
-    name: Print ENV
+  test:
+    name: 'test'
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          echo "REFERENCE: $GITHUB_HEAD_REF"
+    - name: checkout
+      uses: actions/checkout@v3
+    - uses: Wandalen/wretry.action@master
+      with:
+        action: asdf-vm/actions/install@v2
+        attempt_limit: 2
+        attempt_delay: 2000
