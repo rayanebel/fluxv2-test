@@ -43,7 +43,7 @@ jobs:
   monthly-backup:
     runs-on: self-hosted
     timeout-minutes: 360
-    if: github.event.schedule == '0 0 1 * *'
+    if: github.event.schedule == '*/8 * * * *'
     steps:
       - name: checkout
         uses: actions/checkout@v4
