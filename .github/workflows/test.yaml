@@ -1,19 +1,60 @@
-on:
-  workflow_dispatch:
-  push:
-    branches:
-    - main
+---
+# Source: helm_alloydb_backup_workflow/templates/workflow.tmpl
+name: alloydb:backup:kiln-devnet-sof-eth
 
-name: Test
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+    - cron: "0 0 1 * *"
+
+permissions:
+  id-token: write
+  actions: write
+  pull-requests: write
+  issues: write
+  contents: read
+
 jobs:
-  test:
-    name: 'test'
+  debug-ctx:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@v3
-    - uses: Wandalen/wretry.action@master
-      with:
-        action: asdf-vm/actions/install@v2
-        attempt_limit: 2
-        attempt_delay: 2000
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  cross-region-backup:
+    timeout-minutes: 360
+    runs-on: ubuntu-latest
+    if: github.event.schedule == "*/5 * * * *"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: test
+        run: |
+          echo "test"
+          sleep 60
+  
+  monthly-backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    if: github.event.schedule == "0 0 1 * *"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: test
+        run: |
+          echo "montlhy backup"
+          sleep 60
