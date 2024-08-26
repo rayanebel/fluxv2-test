@@ -1,8 +1,7 @@
----
-# Source: helm_alloydb_backup_workflow/templates/workflow.tmpl
 name: alloydb:backup:kiln-devnet-sof-eth
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
     - cron: "0 0 1 * *"
