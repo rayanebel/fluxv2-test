@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   debug-ctx:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Dump GitHub context
         env:
@@ -24,7 +24,7 @@ jobs:
 
   cross-region-backup:
     timeout-minutes: 360
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event.schedule == '*/5 * * * *'
     steps:
       - name: checkout
@@ -41,7 +41,7 @@ jobs:
           sleep 60
   
   monthly-backup:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 360
     if: github.event.schedule == '0 0 1 * *'
     steps:
