@@ -38,13 +38,14 @@ jobs:
       - name: test
         run: |
           echo "test"
-          sleep 60
+          sleep 10
           exit 1
 
       - name: 'notify:slack:failure'
         if: failure()
         uses: slackapi/slack-github-action@v1.26.0
         with:
+          channel-id: D058CMY42KA
           payload: |
             {
               "blocks": [
