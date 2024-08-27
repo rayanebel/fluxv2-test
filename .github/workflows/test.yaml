@@ -94,7 +94,7 @@ jobs:
                         "text": {
                           "type": "plain_text",
                           "text": ":gcp: View AlloyDB Cluster",
-                          "emoji": true"
+                          "emoji": true
                         },
                         "url": "https://console.cloud.google.com/alloydb/locations/europe-west1/clusters/kiln-devnet-sof-eth/overview?project=${{ vars.GOOGLE_DEVNET_PROJECT_ID }}"
                       }
