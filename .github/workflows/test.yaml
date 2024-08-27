@@ -47,63 +47,63 @@ jobs:
         with:
           payload: |
             {
-                "blocks": [
-                  {
-                    "type": "header",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "🚨 Cross-Region AlloyDB Backup Failure",
-                      "emoji": true
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "The cross-region backup process for AlloyDB has encountered an error and failed to complete."
-                    }
-                  },
-                  {
-                    "type": "divider"
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Error Details:*\n- Backup creation did not succeed.\n- Please check the associated logs for more information."
-                    }
-                  },
-                  {
-                    "type": "divider"
-                  },
-                  {
-                    "type": "actions",
-                    "elements": [
-                      {
-                        "type": "button",
-                        "text": {
-                          "type": "plain_text",
-                          "text": ":github: View Failed GitHub Action",
-                          "emoji": true
-                        },
-                        "style": "danger",
-                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-                      },
-                      {
-                        "type": "button",
-                        "text": {
-                          "type": "plain_text",
-                          "text": ":gcp: View AlloyDB Cluster",
-                          "emoji": true
-                        },
-                        "url": "https://console.cloud.google.com/alloydb/locations/europe-west1/clusters/kiln-devnet-sof-eth/overview?project=${{ vars.GOOGLE_DEVNET_PROJECT_ID }}"
-                      }
-                    ]
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚨 Cross-Region AlloyDB Backup Failure",
+                    "emoji": true
                   }
-                ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "The cross-region backup process for AlloyDB has encountered an error and failed to complete."
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Error Details:*\n- Backup creation did not succeed.\n- Please check the associated logs for more information."
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":github: View Failed GitHub Action",
+                        "emoji": true
+                      },
+                      "style": "danger",
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":gcp: View AlloyDB Cluster",
+                        "emoji": true
+                      },
+                      "url": "https://console.cloud.google.com/alloydb/locations/europe-west1/clusters/kiln-devnet-sof-eth/overview?project=${{ vars.GOOGLE_DEVNET_PROJECT_ID }}"
+                    }
+                  ]
+                }
+              ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTIFICATIONS_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTIFICATIONS_TOKEN }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
   
   monthly-backup:
