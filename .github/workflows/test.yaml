@@ -3,7 +3,7 @@ name: alloydb:backup:kiln-devnet-sof-eth
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
     - cron: '*/30 * * * *'
 
 permissions:
