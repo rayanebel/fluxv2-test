@@ -19,7 +19,7 @@ archives:
 
 dockers:
 - image_templates:
-    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-amd64'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-amd64'
   dockerfile: Dockerfile
   use: buildx
   goos: linux
@@ -27,7 +27,7 @@ dockers:
   build_flag_templates:
    - "--platform=linux/amd64"
 - image_templates:
-    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm64'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-arm64'
   dockerfile: Dockerfile
   use: buildx
   goos: linux
@@ -35,11 +35,11 @@ dockers:
   build_flag_templates:
     - "--platform=linux/arm64"
 docker_manifests:
-- name_template: 'ghcr.io/hellotest/hellotest:{{ .Tag }}'
+- name_template: 'ghcr.io/rayanebel/hellotest:{{ .Tag }}'
   image_templates:
-    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-amd64'
-    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm64'
-    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-amd64'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-arm64'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-arm'
 
 changelog:
   disable: true
