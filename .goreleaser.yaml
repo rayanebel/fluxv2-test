@@ -39,5 +39,9 @@ docker_manifests:
   image_templates:
     - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-amd64'
     - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-arm64'
+- name_template: 'ghcr.io/rayanebel/hellotest:latest'
+  image_templates:
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-amd64'
+    - 'ghcr.io/rayanebel/hellotest:{{ .Tag }}-arm64'
 changelog:
   disable: true
