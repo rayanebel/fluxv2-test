@@ -1,0 +1,45 @@
+version: 2
+project_name: hellotest
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: hellotest
+    main: main.go
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+
+archives:
+  - format: tar.gz
+    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+
+dockers:
+- image_templates:
+    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-amd64'
+  dockerfile: Dockerfile
+  use: buildx
+  goos: linux
+  goarch: amd64
+  build_flag_templates:
+   - "--platform=linux/amd64"
+- image_templates:
+    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm64'
+  dockerfile: Dockerfile
+  use: buildx
+  goos: linux
+  goarch: arm64
+  build_flag_templates:
+    - "--platform=linux/arm64"
+docker_manifests:
+- name_template: 'ghcr.io/hellotest/hellotest:{{ .Tag }}'
+  image_templates:
+    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-amd64'
+    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm64'
+    - 'ghcr.io/hellotest/hellotest:{{ .Tag }}-arm'
+
+changelog:
+  disable: true
