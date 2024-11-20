@@ -1,0 +1,58 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+version-template: '$MAJOR.$MINOR.$PATCH'
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+      - 'enhancement'
+  patch:
+    labels:
+      - 'auto-update'
+      - 'patch'
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+      - 'hotfix'
+      - 'no-release'
+  default: 'minor'
+
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feat'
+      - 'feature'
+      - 'enhancement'
+  - title: '🐞 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+      - 'hotfix'
+  - title: '🧪 Tests'
+    label: 'test'
+  - title: '👗 Style'
+    labels:
+      - 'style'
+      - 'refactor'
+  - title: "🧰 Maintenance"
+    label: "chore"
+  - title: "📝 Documentation"
+    labels:
+      - 'docs'
+      - 'documentation'
+
+change-template: |
+  <details>
+    <summary>$TITLE @$AUTHOR (#$NUMBER)</summary>
+
+    $BODY
+  </details>
+
+template: |
+  ## What’s Changed
+
+  $CHANGES
