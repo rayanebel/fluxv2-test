@@ -5,6 +5,9 @@ import (
 	"net/http"
 )
 
+func Add(a int, b int) int {
+	return a + b
+}
 func main() {
 	mu := http.NewServeMux()
 	mu.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
