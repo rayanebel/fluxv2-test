@@ -5,19 +5,20 @@ version-resolver:
   major:
     labels:
       - 'major'
+      - 'breaking'
   minor:
     labels:
       - 'minor'
       - 'enhancement'
+      - 'feature'
+      - 'feat'
   patch:
     labels:
-      - 'auto-update'
       - 'patch'
       - 'fix'
       - 'bugfix'
       - 'bug'
       - 'hotfix'
-      - 'no-release'
   default: 'minor'
 
 categories:
@@ -53,6 +54,35 @@ change-template: |
   </details>
 
 template: |
-  ## What’s Changed
+  ## 🔥 Highlights
+
+  Cardano Validator Watcher $RESOLVED_VERSION is a feature|patch release. Users are encouraged to upgrade for the best experience.
 
   $CHANGES
+
+autolabeler:
+  - label: 'breaking'
+    title:
+      - '/!:/i'
+  - label: 'chore'
+    title:
+      - '/^chore/i'
+  - label: 'fix'
+    title:
+      - '/^fix/i'
+  - label: 'feature'
+    title:
+      - '/^feat/i'
+  - label: 'documentation'
+    title:
+      - '/^docs/i'
+  - label: 'test'
+    title:
+      - '/^test/i'
+  - label: 'style'
+    title:
+      - '/^style/i'
+      - '/^refactor/i'
+  - label: 'release'
+    title:
+      - '/^release/i'
