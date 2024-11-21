@@ -11,5 +11,5 @@ func main() {
 		w.Write([]byte("Hello world"))
 	})
 	fmt.Println("Server is running on port 8080")
-	http.ListenAndServe(":8080", mu)
+	http.ListenAndServe(":8000", mu)
 }
