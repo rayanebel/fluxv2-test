@@ -22,6 +22,9 @@ version-resolver:
   default: 'minor'
 
 categories:
+  - title: '⚠️ BREAKING CHANGES'
+    labels:
+      - 'breaking'
   - title: '🚀 Features'
     labels:
       - 'feat'
