@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-func Hello() {
-	println("Hello from the package")
-}
-
 func main() {
 	mu := http.NewServeMux()
 	mu.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
