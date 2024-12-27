@@ -30,13 +30,10 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          echo "changed=$(
-            ct list-changed \
-              --target-branch "${{ github.event.repository.default_branch }}" \
-              --chart-dirs charts \
-            sed 's/.*/"&"/' |
-            jq -cs
-          )" | tee $GITHUB_OUTPUT
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          if [[ -n "$changed" ]]; then
+            echo "changed=true" | tee "$GITHUB_OUTPUT"
+          fi
 
       - name: Run chart lint
         if: steps.list-changed.outputs.changed == 'true'
