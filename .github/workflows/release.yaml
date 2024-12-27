@@ -2,11 +2,7 @@ name: release
 
 on:
   release:
-<<<<<<< Updated upstream
-    types: [ published ]
-=======
     types: [published]
->>>>>>> Stashed changes
 
 permissions:
   contents: write
