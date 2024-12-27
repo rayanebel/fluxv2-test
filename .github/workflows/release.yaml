@@ -40,6 +40,7 @@ jobs:
 
   helm-release:
     runs-on: ubuntu-latest
+    needs: goreleaser
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -47,9 +48,10 @@ jobs:
         uses: azure/setup-helm@v1
       - name: Verify Chart Version
         run: |
+          TAG=$(echo ${{ github.ref_name }} | sed 's/v//')
           CHART_VERSION=$(yq -r .version ./charts/cardano-validator-watcher/Chart.yaml)
-          if [ "${{ github.ref_name }}" != "${CHART_VERSION}" ]; then
-            echo "Version mismatch: release tag ${{ github.ref_name }} does not match Chart.yaml version ${CHART_VERSION}"
+          if [ "$TAG" != "${CHART_VERSION}" ]; then
+            echo "Version mismatch: release tag ${TAG} does not match Chart.yaml version ${CHART_VERSION}"
             exit 1
           fi
           echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_ENV
