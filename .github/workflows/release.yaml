@@ -66,6 +66,6 @@ jobs:
           helm package charts/cardano-validator-watcher --version $CHART_VERSION
       - name: 'Helm Push'
         run: |
-          helm push ./cardano-validator-watcher-$VERSION.tgz oci://${{ env.REGISTRY }}/rayanebel/charts/cardano-validator-watcher
+          helm push ./cardano-validator-watcher-$CHART_VERSION.tgz oci://${{ env.REGISTRY }}/rayanebel/charts/cardano-validator-watcher
         env:
           REGISTRY: ghcr.io
