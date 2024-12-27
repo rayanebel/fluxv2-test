@@ -59,13 +59,13 @@ jobs:
           echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_ENV
       - name: Helm Registry Login
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io --username kilnfi --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io --username rayanebel --password-stdin
       - name: 'Helm Package'
         id: helm-package
         run: |
           helm package charts/cardano-validator-watcher --version $CHART_VERSION
       - name: 'Helm Push'
         run: |
-          helm push ./cardano-validator-watcher-$VERSION.tgz oci://${{ env.REGISTRY }}/kilnfi/charts/cardano-validator-watcher
+          helm push ./cardano-validator-watcher-$VERSION.tgz oci://${{ env.REGISTRY }}/rayanebel/charts/cardano-validator-watcher
         env:
           REGISTRY: ghcr.io
