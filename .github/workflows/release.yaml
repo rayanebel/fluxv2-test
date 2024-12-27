@@ -43,9 +43,11 @@ jobs:
     needs: goreleaser
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v4.2.0
+        with:
+          version: v3.16.4
       - name: Verify Chart Version
         run: |
           TAG=$(echo ${{ github.ref_name }} | sed 's/v//')
