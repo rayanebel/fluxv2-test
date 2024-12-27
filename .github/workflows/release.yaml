@@ -1,14 +1,8 @@
-name: release
+name: lint
 
 on:
-<<<<<<< Updated upstream
-  push:
-    tags:
-      - '*'
-=======
   release:
     types: [ published ]
->>>>>>> Stashed changes
 
 permissions:
   contents: write
