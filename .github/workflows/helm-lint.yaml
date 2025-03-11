@@ -9,6 +9,16 @@ on:
       - main
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: debug-env
+        run: env | sort
+
+      - name: debug-env-github
+        run: |
+          echo "GITHUB_CONTEXT:"
+          echo '${{ toJson(github) }}' | jq '.'
   helm-lint:
     runs-on: ubuntu-latest
     steps:
