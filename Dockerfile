@@ -1,4 +1,5 @@
 ARG BUILDER=golang:1.23-alpine3.21
+ARG RUNNER=alpine:3.21
 
 FROM ${BUILDER} AS builder
 
